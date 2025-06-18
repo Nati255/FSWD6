@@ -1,6 +1,5 @@
-// fswd6/server/db/insertData.js
-const mysql = require('mysql2');
-const fs = require('fs');
+import mysql from 'mysql2';
+import fs from 'fs';
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -14,7 +13,7 @@ connection.connect(async (err) => {
   if (err) throw err;
   console.log('Connected to fswd6 DB');
 
-  const raw = fs.readFileSync('./db.json', 'utf-8');
+  const raw = fs.readFileSync('db.json', 'utf-8');
   const data = JSON.parse(raw);
 
   try {
@@ -25,9 +24,9 @@ connection.connect(async (err) => {
       insertComments(data.comments)
     ]);
 
-    console.log('✅ All data inserted successfully!');
+    console.log(' All data inserted successfully!');
   } catch (error) {
-    console.error('❌ Error inserting data:', error);
+    console.error(' Error inserting data:', error);
   } finally {
     connection.end();
   }

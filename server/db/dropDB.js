@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+import mysql from 'mysql2';
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connected to MySQL');
-
+  
   const sql = `DROP DATABASE IF EXISTS fswd6;`;
 
   connection.query(sql, (err) => {

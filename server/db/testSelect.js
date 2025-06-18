@@ -1,5 +1,4 @@
-
-const mysql = require('mysql2');
+import mysql from 'mysql2';
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -10,7 +9,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) throw err;
-  console.log('✅ Connected to fswd6 DB');
+  console.log('Connected to fswd6 DB');
 
   const queries = [
     { table: 'users', sql: 'SELECT * FROM users LIMIT 5' },
@@ -23,9 +22,9 @@ connection.connect((err) => {
   queries.forEach(({ table, sql }) => {
     connection.query(sql, (err, results) => {
       if (err) {
-        console.error(`❌ Error reading from ${table}:`, err.message);
+        console.error(` Error reading from ${table}:`, err.message);
       } else {
-        console.log(`\n📦 Data from '${table}':`);
+        console.log(`\n Data from '${table}':`);
         console.table(results);
       }
 
